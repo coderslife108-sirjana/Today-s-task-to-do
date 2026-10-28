@@ -1,89 +1,54 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-  <head> <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Today's List</title> 
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" > <link rel="stylesheet" href="style.css"> 
-  </head> 
-  <body> 
-    <main class="frame"> 
-      <section class="board">
-  <header class="header">
-    <h1>Today's List</h1>
-    <span class="date" id="dateLabel"></span>
-  </header>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1f3327">
+    <title>Today's List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="frame">
+      <section class="board" aria-labelledby="pageTitle">
+        <header class="header">
+          <h1 id="pageTitle">Today's List</h1>
+          <span class="date" id="dateLabel"></span>
+        </header>
 
-  <p class="subtitle">
-    Chalk it up, wipe it clean.
-  </p>
+        <p class="subtitle">Chalk it up, wipe it clean.</p>
 
-  <form id="addForm" class="task-form">
-    <input
-      type="text"
-      id="taskInput"
-      placeholder="Write something down…"
-      maxlength="140"
-      autocomplete="off"
-    >
+        <form id="addForm" class="task-form">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Write something down…"
+            maxlength="140"
+            autocomplete="off"
+            aria-label="New task"
+            required
+          >
+          <button type="submit" class="add-btn" aria-label="Add task">+</button>
+        </form>
 
-    <button
-      type="submit"
-      class="add-btn"
-      aria-label="Add task"
-    >
-      +
-    </button>
-  </form>
+        <div class="tabs" role="tablist" aria-label="Filter tasks">
+          <button class="tab active" type="button" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="tab" type="button" data-filter="active" role="tab" aria-selected="false">Active</button>
+          <button class="tab" type="button" data-filter="done" role="tab" aria-selected="false">Done</button>
+        </div>
 
-  <div class="tabs" role="tablist" aria-label="Filter tasks">
+        <ul class="task-list" id="list" aria-label="Tasks"></ul>
+        <p class="empty" id="emptyMsg"></p>
+        <p class="status" id="statusMsg" role="status" aria-live="polite"></p>
 
-    <button
-      class="tab active"
-      data-filter="all"
-      role="tab"
-      aria-selected="true"
-    >
-      All
-    </button>
-
-    <button
-      class="tab"
-      data-filter="active"
-      role="tab"
-      aria-selected="false"
-    >
-      Active
-    </button>
-
-    <button
-      class="tab"
-      data-filter="done"
-      role="tab"
-      aria-selected="false"
-    >
-      Done
-    </button>
-
-  </div>
-
-  <ul class="task-list" id="list"></ul>
-
-  <p class="empty" id="emptyMsg"></p>
-
-  <footer>
-    <span id="countLabel">0 left</span>
-
-    <button
-      class="clear-btn"
-      id="clearDone"
-      type="button"
-    >
-      erase completed
-    </button>
-  </footer>
-
-</section>
-
-</main> <script src="script.js"></script> </body> </html>
+        <footer>
+          <span id="countLabel">0 left</span>
+          <button class="clear-btn" id="clearDone" type="button">erase completed</button>
+        </footer>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
